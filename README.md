@@ -68,7 +68,10 @@ application/
 │ └── api_helper.php
 assets/
 │ └── css/
-│ └── app.css
+│ 	├── app.css
+│ └── js/
+│ 	├── list.js
 
 ## Watch Video
 https://youtu.be/McBxCOLCT9I
+https://youtu.be/fsAM8jXyURA
