@@ -13,7 +13,9 @@ class Api extends CI_Controller
 	// GET /email-campaign
     public function list()
     {	
-		$campaigns = $this->email_campaign_model->get_all_campaigns();
+		$email = $this->input->get('email', TRUE);
+
+		$campaigns = $this->email_campaign_model->get_all_campaigns($email);
 		api_response($campaigns);
     }
 	
@@ -43,11 +45,25 @@ class Api extends CI_Controller
         api_response([ 'id' => $id]);
     }
 
+	// GET /email-campaign/filter
 	public function filter()
 	{
 		$email = $this->input->get('email', TRUE);
 
 		$campaigns = $this->email_campaign_model->get_campaigns_by_email($email);
 		api_response($campaigns);
+	}
+
+	// POST /email-campaign/reorder
+	public function reorder()
+	{
+		$input = json_decode($this->input->raw_input_stream, true);
+		if(!is_array($input)){
+			api_error('Invalid data',404);
+		}
+		if (!empty($input['order'])) {
+			$this->email_campaign_model->reorder($input['order']);
+			api_response(['status' => true, 'message' => 'Order updated']);
+		}
 	}
 }

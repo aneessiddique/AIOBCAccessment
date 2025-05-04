@@ -20,6 +20,7 @@ A simple email campaign automation system built with CodeIgniter 3 and RESTful A
    Run the provided SQL to create the `email_campaigns` table.
    CREATE TABLE email_campaigns (
 		id INT AUTO_INCREMENT PRIMARY KEY,
+		position INT DEFUALT 0,
 		subject VARCHAR(255) NOT NULL,
 		body TEXT NOT NULL,
 		recipient_email VARCHAR(255) NOT NULL,
@@ -45,6 +46,7 @@ POST	/api/email-campaign/store				Create new campaign
 GET		/api/email-campaigns/list				List all campaigns
 POST	/api/email-campaign/{id}/send			Send campaign & mark sent
 GET		/api/email-campaigns/filter?email=...	Filter campaigns by email
+POST	/api/email-campaign/reorder				Sort campaign using drag and drop
 
 ## Application Structue
 application/

@@ -54,7 +54,10 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['email-campaign/create']['get'] = 'email_campaign/create';
+
+//API routes
 $route['api/email-campaign/list']['get'] = 'api/list';
 $route['api/email-campaigns/filter']['get'] = 'api/filter';
 $route['api/email-campaign']['post'] = 'api/store';
 $route['api/email-campaign/(:num)/send']['post'] = 'api/send/$1';
+$route['api/email-campaign/reorder']['post'] = 'api/reorder';

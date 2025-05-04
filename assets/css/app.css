@@ -124,3 +124,12 @@ input[type=text], textarea {
 	padding: 20px;
 	}
 	a{text-decoration:none;}
+
+	#campaignTable tr {
+		cursor: grab;
+	  }
+	  
+	  #campaignTable tr.dragging {
+		opacity: 0.5;
+		cursor: grabbing;
+	  }

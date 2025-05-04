@@ -9,8 +9,12 @@ class Email_campaign_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    public function get_all_campaigns()
-    {
+    public function get_all_campaigns($email = null)
+    {	
+		if (!empty($email)) {
+			$this->db->like('recipient_email', $email);
+		}
+		$this->db->order_by('position','ASC');
         return $this->db->get($this->table)->result_array();
     }
 
@@ -32,6 +36,14 @@ class Email_campaign_model extends CI_Model
 
 		$query = $this->db->get('email_campaigns');
 		return $query->result();
+	}
+
+	public function reorder($ids)
+	{
+		foreach ($ids as $position => $id) {
+			$this->db->where('id', $id);
+			$this->db->update('email_campaigns', ['position' => $position]);
+		}
 	}
 
 }
