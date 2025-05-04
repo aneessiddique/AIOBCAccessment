@@ -5,9 +5,17 @@ class Email_campaign_model extends CI_Model
 
     public function create_campaign($data)
     {
+		$data['position'] = $this->get_next_position();
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
+
+	public function get_next_position() {
+		$this->db->select_max('position');
+		$query = $this->db->get($this->table);
+		$result = $query->row();
+		return ($result && $result->position !== null) ? ($result->position + 1) : 1;
+	}
 
     public function get_all_campaigns($email = null)
     {	

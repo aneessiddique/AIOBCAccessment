@@ -5,9 +5,9 @@
 		<form id="createForm">
 			<input type="text" id="subject" name="subject" placeholder="Subject" required>
 
-			<input type="text" id="recipient_email" name="recipient_email" placeholder="Recipient Email" required>
+			<input type="email" id="recipient_email" name="recipient_email" placeholder="Recipient Email" required>
 
-			<textarea name="body" placeholder="Body" rows="4"></textarea required><br>
+			<textarea name="body" placeholder="Body" rows="4" required></textarea><br>
 		
 			<button type="submit" class="submitbtn">Create Campaign</button>
 		</form>
